@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block messages %}
+    {% if messages %}
+        {% for msg in messages %}
+            <div {% if msg.tags %} class="alert alert-{{msg.tags}} text-center" {% endif %} >{{msg}}</div>
+        {% endfor %}
+    {% endif %}
+{% endblock messages %}
+
+{% block content %}
+    <div class="col-sm-12">
+        <h1 class="my-5">Become an Author</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <span class="text-warning">{{fm.errors|striptags}}</span><br>
+            {% endfor %}
+            <button class="btn btn-success mb-5">SignUp</button>
+        </form>
+    </div>
+{% endblock content %}

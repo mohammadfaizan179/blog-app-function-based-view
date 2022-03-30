@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block messages %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p class="alert alert-{{msg.tags}} text-center">{{msg}}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock messages %}
+
+{% block content %}
+    <div class="col-sm-12 py-5">
+        <h1 class="mb-5">Dashboard / Add Post</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <span class="text-danger">{{fm.errors|striptags}}</span><br>
+            {% endfor %}
+            <button class="btn btn-success">Update Post</button>
+        </form>        
+    </div>
+{% endblock content %}
+

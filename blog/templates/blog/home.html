@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+    <div class="col-sm-12">
+        <h2 class="mt-5">Home Page</h2>
+        
+        {% if posts %}
+            {% for post in posts %}
+                <div class="jumbotron jumbotron-fluid jumbo-color my-5">
+                    <div class="container">
+                        <h3 class="display-5 font-weight-bold">{{post.title}}</h3>
+                        <p class="lead text-justify">{{post.desc}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="jumbotron jumbotron-fluid jumbo-color my-5">
+                <div class="container">
+                    <h3 class="display-4 font-weight-bold">No Post Available</h3>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
+
